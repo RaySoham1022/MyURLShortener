@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% load static %} 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Sign In - MyURLShortener</title>
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/3214/3214679.png"
+      type="image/x-icon"
+    /> 
+  </head>
+
+  <body class="min-h-screen bg-gradient-to-tr from-blue-800 via-white to-sky-400 text-black">
+    <div class="Details">
+      <section style="height: 570px; box-sizing: border-box">
+        <div class="grid grid-cols-1 lg:grid-cols-2" style="height: 570px">
+          <div
+            class="relative h-full flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 sm:px-6 lg:px-8"
+            style="height: 570px"
+          >
+            <div class="bg-fixed absolute inset-0">
+              <img
+                class="object-cover object-top w-full h-screen"
+                src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/01/url-shortener.jpg"
+                alt=""
+              />
+            </div>
+           </div>
+          <div
+            class="flex items-center justify-center px-4 py-10 sm:px-6 lg:px-8 sm:py-16 lg:py-24"
+            style="flex-direction: column; height: 571px"
+          >
+            <div style="margin-top: 0px">
+              <div class="inline-flex items-center">
+                <img
+                  class="h-10"
+                  src="https://cdn-icons-png.flaticon.com/512/3214/3214679.png"
+                />
+                <a
+                  href="http://127.0.0.1:8000/"
+                  class="text-2xl"
+                  style="color: black"
+                  >MyURLShortener</a
+                >
+              </div>
+            </div>
+            <div
+              class="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto"
+              style="margin-top: 0px"
+            >
+              <h2
+                class="text-3xl font-bold leading-tight text-black sm:text-4xl"
+              >
+                Sign In 
+              </h2>
+              <p class="mt-2 text-base text-black-300">
+                Don't have an account?
+                <a
+                  href="http://127.0.0.1:8000/authenticate/signup"
+                  title=""
+                  class="font-medium text-blue-700 transition-all duration-200 hover:text-blue-300 hover:underline focus:text-indigo-700"
+                >
+                  Create a free account
+                </a>
+              </p>
+              {% if messages%}
+              <div style="border-radius: 20px">
+                {% for message in messages %} {% if message.tags == 'info' %}
+                <p
+                  style="
+                    color: red;
+                    background-color: white;
+                    padding-left: 10px;
+                    border-radius: 10px;
+                    margin-top: 10px;
+                  "
+                >
+                  {{message}}
+                </p>
+                {% elif message.tags == 'success' %}
+                <p
+                  style="
+                    color: green;
+                    background-color: white;
+                    padding-left: 10px;
+                    border-radius: 10px;
+                    margin-top: 10px;
+                  "
+                >
+                  {{message}}
+                </p>
+                {% endif %} {% endfor %}
+              </div>
+              {% endif %} {% comment %}
+              <div style="border-radius: 20px">
+                <p
+                  style="
+                    color: green;
+                    background-color: white;
+                    padding-left: 10px;
+                  "
+                >
+                  success message {{success}}
+                </p>
+              </div>
+              {% endcomment %}
+              <form
+                name="otp_form"
+                action="#"
+                method="POST"
+                class="mt-8"
+                style="margin-top: 12px"
+              >
+                {% csrf_token %}
+                <div class="space-y-5">
+                  <div style="margin-top: 0px">
+                    <label
+                      for="email"
+                      class="text-base font-medium text-black"
+                    >
+                      Email
+                    </label>
+                    <div class="mt-2.5">
+                      <input
+                        class="flex h-10 w-full rounded-md border border-gray-300 py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                        type="email"
+                        name="email"
+                        style="color: black"
+                        placeholder="Enter Your Email"
+                        id="email"
+                        value="{{usercookie}}"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div style="margin-top: 5px">
+                    <div class="flex justify-between">
+                      <label
+                        for="password"
+                        class="text-base font-medium text-black"
+                      >
+                        Password
+                      </label>
+                    </div>
+                    <div class="mt-2.5">
+                      <input
+                        class="flex h-10 w-full rounded-md border border-gray-300 py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                        type="password"
+                        name="password"
+                        style="color: black"
+                        placeholder="Enter Your Password"
+                        id="password"
+                        value="{{passcookie}}"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <input
+                    type="checkbox"
+                    id="remember_me"
+                    name="remember_me"
+                    value="remember_me"
+                    style="margin-bottom: 0px"
+                  />
+                  <label
+                    for="remember_me"
+                    style="color: brown; margin-right: 20px"
+                    ><strong>Remember me</strong></label
+                  >
+                  <button
+                      type="Submit"
+                      class="w-full inline-flex items-center justify-center rounded-md bg-green-600 px-3.5 py-2.5 text-base font-semibold leading-7 text-white hover:bg-indigo-500"
+                    >
+                      Ready to Go
+                    </button>
+                  <div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

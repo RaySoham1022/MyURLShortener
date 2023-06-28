@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  {% load static %}
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>MyURLShortener</title>
+  <style>
+    #map {
+      height: 400px;
+      width: 500px;
+    }
+
+    #searchBox {
+      margin: 10px 0;
+    }
+  </style>
+  <link rel="icon"
+    href="https://cdn-icons-png.flaticon.com/512/3214/3214679.png"
+    type="image/x-icon">
+</head>
+<!-- new commit -->
+
+<body class="bg-cover bg-fixed max-h-screen bg-gradient-to-tr from-cyan-400 via-white to-fuchsia-400 text-black">
+
+  <!-- navbar -->
+  {% include './navbar.html' %}
+  <!-- navbar end -->
+
+  <!-- hero section -->
+
+  <div class="flex justify-between items-center h-[30rem]" style="padding-right: 50px;">
+
+    <!-- cta div -->
+    <div class="flex flex-1 justify-center flex-col">
+      <div class="pl-[20%]">
+        <div class="flex flex-col">
+          <p class="text-4xl my-2">Welcome to our URL Shortening Platform</p>
+          <div style="width:650px;"> 
+            <p class="text-2xl">
+              <strong><span> Provide your Long URL here : -- </span></strong><br><br></p>
+              <form action="#" method="POST">
+                  {% csrf_token %}
+                <input type="url" id="longurl" name="longurl" placeholder="Enter Long URL"
+                      class="flex w-full h-10 px-3 rounded-md border border-gray-300 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-black dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900 mb-4">
+                      <div class="flex items-center">
+                          {% if user.is_authenticated %}
+                          <button type="submit" class="mx-60 my-8 w-66 p-2 rounded-lg font-bold text-white bg-red-500 drop-shadow-xl" href="">
+                            Generate Short URL
+                          </button>  
+                          {% endif %}
+              
+                          {% if user.is_authenticated == False %}
+                          <button class="mx-60 my-8 w-66 p-2 rounded-lg font-bold text-white bg-red-500 drop-shadow-xl" href="">
+                          <a href="/authenticate/login" rel="noreferrer noopener">
+                            Generate Short URL
+                          </a>
+                          {% endif %}
+                        </button>
+                      </div>
+              </form>    
+            </div>
+        </div>
+        
+        {% if user.is_authenticated %}
+        <div style="width:650px;">
+          <p class="text-2xl">
+            <strong><span> Your Short URL is : -- </span></strong><br><br>
+                <input type="url" id="shorturl" name="shorturl" value="{{shorturlvalue}}"
+                    class="flex h-10 w-full px-3 rounded-md border border-gray-300 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-black dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900 mb-4">
+          </p>
+          
+        </div>
+        {% endif %}
+        <br />
+      </div>
+      <p style="margin-left:20px; text-align: center;"><strong>(Made by Soham Ray for Upskill Campus Python Internship)</strong></p>
+    </div>
+    <!-- cta div end -->
+    
+  </div>
+  <!-- Hero Section end -->
+
+</body>
+
+</html>

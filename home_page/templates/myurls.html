@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  {% load static %}
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>MyURLShortener</title>
+  <style>
+    #map {
+      height: 400px;
+      width: 500px;
+    }
+
+    #searchBox {
+      margin: 10px 0;
+    }
+  </style>
+  <link rel="icon"
+    href="https://cdn-icons-png.flaticon.com/512/3214/3214679.png"
+    type="image/x-icon">
+</head>
+<!-- new commit -->
+
+<body class="bg-cover bg-fixed max-h-screen bg-gradient-to-tr from-cyan-400 via-white to-fuchsia-400 text-black">
+
+  <!-- navbar -->
+  {% include './urlsnav.html' %}
+  <!-- navbar end -->
+
+  <!-- hero section -->
+
+  <div class="flex justify-between items-center h-[10rem] mx-8" style="flex-direction: column;">
+    <div style="margin-bottom: 10px;">
+      <h1 style="margin-top:25px;"><strong>Your Shortened URLs are :--</strong></h1>  
+    </div>
+    <table style="width:100%; text-align: center;">
+      <tr style="border:solid 2px black;color:beige; background-color: brown;">
+        <!-- <th>Sl No.</th> -->
+        <th>Long URL</th>
+        <th>Short URL</th>
+      </tr>
+      {% if urldetails %}
+        {% for details in urldetails %}
+        <tr style="border:solid 2px black;">
+          <td>{{details.longURL}}</td>
+          <td><a href="{{details.shortURL}}" target="_blank" style="color:blue;">{{details.shortURL}}</a></td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+      
+    </table>
+    
+  <p style="margin-left:20px; margin-top: 50px; text-align: center;"><strong>(Made by Soham Ray for Upskill Campus Python Internship)</strong></p>
+   
+  </div>
+  <!-- Hero Section end -->
+
+</body>
+
+</html>

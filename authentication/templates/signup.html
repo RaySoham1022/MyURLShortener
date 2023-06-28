@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    {% load static %} 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Sign Up - MyURLShortener</title>
+    <link rel = "icon" href = "https://cdn-icons-png.flaticon.com/512/3214/3214679.png" 
+        type = "image/x-icon">
+</head>
+
+<body class="bg-cover min-h-screen bg-gradient-to-tr from-cyan-400 via-white to-fuchsia-400">
+<div class="Details  text-black">
+  <section style="box-sizing: border-box;">
+        <div class="grid grid-cols-1 lg:grid-cols-2 " style="height: full;">
+            <div
+            class="flex items-center justify-center px-4 py-10 sm:px-6 lg:px-8 sm:py-16 lg:py-24" style="flex-direction:column; height:571px; padding-top: 5px; padding-bottom: 5px;">
+            <div style="box-sizing: border-box;">
+              <div class="inline-flex items-center">
+                <img class="h-10" src="https://cdn-icons-png.flaticon.com/512/3214/3214679.png" />
+                <a href="http://127.0.0.1:8000/" class="text-2xl font-semibold" style="color:black">MyURLShortener</a>
+              </div>
+            </div>
+            <div class="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
+              <h2
+                class="text-3xl font-bold leading-tight text-black sm:text-4xl"
+              >
+                Sign Up
+              </h2>
+              <p
+                            class="mt-2 text-base text-black-600 dark:text-black-300"
+                            style="margin-bottom: 10px"
+                    >
+                        Already have an account?
+                        <a
+                                href="http://127.0.0.1:8000/authenticate/login"
+                                title=""
+                                class="font-medium text-indigo-600 transition-all duration-200 hover:text-indigo-700 hover:underline focus:text-indigo-700"
+                                style="color: blue"
+                        >
+                            Sign In
+                        </a>
+                    </p>
+              {% if messages %}
+              <div style="border-radius: 20px">
+                {% for message in messages %}
+                <p
+                  style="
+                    color: red;
+                    background-color: white;
+                    padding-left: 10px;
+                    border-radius:10px;
+                    margin-top:10px;
+                  "
+                >
+                  {{message}}
+                </p>
+                {% endfor %}
+              </div>
+              {% endif %}
+              <form action="#" method="POST" class="mt-8" style="margin-top:0px;">
+                {% csrf_token %}
+                <div class="space-y-5">
+                  <div style="margin-top: 5px">
+                    <label
+                      for="email"
+                      class="text-base font-medium text-black"
+                    >
+                      Email
+                    </label>
+                    <div class="mt-2.5">
+                      <input
+                        class="flex h-10 w-full rounded-md border border-gray-300 py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                        type="email"
+                        name="email"
+                        style="color: black"
+                        placeholder="Enter Your Email"
+                        id="email"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div style="margin-top:5px;">
+                    <div class="flex justify-between">
+                      <label
+                        for="password"
+                        class="text-base font-medium text-black"
+                      >
+                        Password
+                      </label>
+                    </div>
+                    <div class="mt-2.5">
+                      <input
+                        class="flex h-10 w-full rounded-md border border-gray-300 py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                        type="password"
+                        name="password"
+                        style="color: black"
+                        placeholder="Enter Your Password"
+                        id="password"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div style="margin-top:5px;">
+                    <div class="flex justify-between">
+                      <label
+                        for="cnfpassword"
+                        class="text-base font-medium text-black"
+                      >
+                        Confirm Password
+                      </label>
+                    </div>
+                    <div class="mt-2.5">
+                      <input
+                        class="flex h-10 w-full rounded-md border border-gray-300 py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                        type="password"
+                        name="cnfpassword"
+                        style="color: black"
+                        placeholder="Confirm Your Password"
+                        id="cnfpassword"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <button
+                      type="Submit"
+                      class="w-full inline-flex items-center justify-center rounded-md bg-green-600 px-3.5 py-2.5 text-base font-semibold leading-7 text-white hover:bg-indigo-500"
+                    >
+                      Ready to Go
+            </div>
+            </div>
+                </div>
+              </form>
+              
+          </div>
+          <div
+          class="relative h-full flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 sm:px-6 lg:px-8" style="height:570px;">
+          <div class=" bg-fixed absolute inset-0">
+            <img
+              class="object-con object-top object-cover w-full h-screen"
+              src="https://fullform.blog/wp-content/uploads/2022/01/url.jpg"
+              alt="Valuation picture"/>
+          </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>
