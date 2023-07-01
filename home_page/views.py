@@ -10,7 +10,6 @@ def index(request, **kwargs):
         if request.method == 'POST':
             try:
                 link = request.POST.get('longurl')
-                print(link)
                 shortener = pyshorteners.Shortener()
                 finalurl = shortener.tinyurl.short(link)
                 shorturlvalue = finalurl
@@ -26,7 +25,22 @@ def index(request, **kwargs):
             data = {'shorturlvalue':shorturlvalue}
             return render(request, "index.html", data)
     else:
-        return render(request, "index.html")
+        if request.method == 'POST':
+            try:
+                link = request.POST.get('longurl')
+                shortener = pyshorteners.Shortener()
+                finalurl = shortener.tinyurl.short(link)
+                shorturlvalue = finalurl
+                data = {'shorturlvalue':shorturlvalue}
+                return render(request, "index.html", data)
+            except:
+                shorturlvalue = ""
+                data = {'shorturlvalue':shorturlvalue}
+                return render(request, "index.html", data)
+        else:
+            shorturlvalue = ""
+            data = {'shorturlvalue':shorturlvalue}
+            return render(request, "index.html", data)
 
 def myurls(request):
     if request.user.is_authenticated == True:
