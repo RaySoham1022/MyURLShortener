@@ -38,12 +38,14 @@
     <table style="width:100%; text-align: center;">
       <tr style="border:solid 2px black;color:beige; background-color: brown;">
         <!-- <th>Sl No.</th> -->
+        <th>URL Name</th>
         <th>Long URL</th>
         <th>Short URL</th>
       </tr>
       {% if urldetails %}
         {% for details in urldetails %}
         <tr style="border:solid 2px black;">
+          <td>{{details.urlname}}</td>
           <td>{{details.longURL}}</td>
           <td><a href="{{details.shortURL}}" target="_blank" style="color:blue;">{{details.shortURL}}</a></td>
           </tr>

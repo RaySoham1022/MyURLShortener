@@ -10,11 +10,12 @@ def index(request, **kwargs):
         if request.method == 'POST':
             try:
                 link = request.POST.get('longurl')
+                name = request.POST.get('urlname')
                 shortener = pyshorteners.Shortener()
                 finalurl = shortener.tinyurl.short(link)
                 shorturlvalue = finalurl
                 data = {'shorturlvalue':shorturlvalue}
-                URLRedirection(profile_username = present_user, shortURL = finalurl, longURL =link ).save()
+                URLRedirection(profile_username = present_user,urlname = name, shortURL = finalurl, longURL =link ).save()
                 return render(request, "index.html", data)
             except:
                 shorturlvalue = ""
